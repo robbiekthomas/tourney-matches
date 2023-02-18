@@ -1,22 +1,23 @@
 import React from "react";
 import Player from "./Player";
 
-
-
-
 const PlayerList = ({ playerData }) => {
-  
+  const players = playerData.map((player) => {
+    return (
+      <Player
+        key={player.gamerTag}
+        gamerTag={player.gamerTag}
+        firstName={player.firstName}
+        lastName={player.lastName}
+        wins={player.wins}
+      />
+    );
+  });
 
-  const onePlayer = playerData[0];
   return (
     <section className="PlayerList">
       <h1>Current participating players</h1>
-      <Player
-        gamerTag={onePlayer.gamerTag}
-        firstName={onePlayer.firstName}
-        lastName={onePlayer.lastName}
-        wins={onePlayer.wins}
-      />
+      {players}
     </section>
   );
 };

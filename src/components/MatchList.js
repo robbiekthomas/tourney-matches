@@ -1,18 +1,21 @@
 import React from "react";
 import Match from "./Match";
 
-
 const MatchList = ({ matchData }) => {
-  const oneMatch = matchData[0];
-
+  const matches = matchData.map((match) => {
+    return (
+      <Match
+        key={match.matchNumber}
+        players={match.players}
+        winner={match.winner}
+        scoreDifference={match.scoreDifference}
+      />
+    );
+  });
   return (
     <section className="PlayerList MatchList">
       <h1>Match list</h1>
-      <Match
-        players={oneMatch.players}
-        winner={oneMatch.winner}
-        scoreDifference={oneMatch.scoreDifference}
-      />
+      {matches}
     </section>
   );
 };
